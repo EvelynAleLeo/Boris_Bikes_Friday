@@ -8,7 +8,7 @@ describe DockingStation do
 end
 
 describe DockingStation do
-  it {is_expected.to respond_to(:release_bike)}
+  it { is_expected.to respond_to(:release_bike) }
 end
 
 describe DockingStation do
@@ -16,5 +16,30 @@ describe DockingStation do
     docking_station = DockingStation.new
     bike = docking_station.release_bike
     expect(bike.working?).to eq true
+  end
+end
+
+describe DockingStation do
+  it { is_expected.to respond_to(:dock).with(1).argument }
+end
+
+describe DockingStation do
+  it { is_expected.to respond_to(:bike) }
+end
+
+describe DockingStation do
+  it 'docks a bike' do
+    docking_station = DockingStation.new
+    bike = Bike.new
+    expect(docking_station.dock(bike)).to eq bike
+  end
+end
+
+describe DockingStation do
+  it 'returns docked bike' do
+    docking_station = DockingStation.new
+    bike = Bike.new
+    docking_station.dock(bike)
+    expect(docking_station.bike).to eq bike
   end
 end
